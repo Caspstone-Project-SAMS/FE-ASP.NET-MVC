@@ -1,0 +1,13 @@
+﻿@{
+    var currentPath = Context.Request.Path.Value;
+
+    //Set default layout except for the login page
+    if (currentPath != null && (!currentPath.Equals("/Login", StringComparison.OrdinalIgnoreCase)))
+    {
+        Layout = "_Layout";
+    }
+    else
+    {
+        Layout = null;
+    }
+}

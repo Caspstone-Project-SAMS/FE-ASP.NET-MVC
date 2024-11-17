@@ -1,0 +1,163 @@
+﻿body {
+    height: 100vh;
+    margin: 0;
+}
+
+p {
+    font-family: Roboto, Arial;
+    margin: 0;
+}
+
+.left-side p {
+    color: white;
+    text-align: center;
+
+    position: relative;
+}
+
+.overall-page {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.left-side {
+    background-color: #0064e8;
+    flex: 1;
+    padding: 0px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-side {
+    flex: 1;
+}
+
+.icon-logo {
+    height: 120px;
+}
+
+.img-dashboard {
+    height: 300px;
+}
+
+.introduction-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.system-name {
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.description {
+    height: 20px;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 150px;
+}
+
+.signin-title {
+    font-weight: 700;
+    font-size: 28px
+}
+
+.welcome-content {
+    margin-bottom: 20px;
+}
+
+.email-input-container {
+    display: flex;
+
+    border: 1px solid, #d9d9d9;
+    padding: 14px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.password-input-container {
+    display: flex;
+
+    border: 1px solid, #d9d9d9;
+    padding: 14px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.input-field {
+    border: none;
+    width: 100%;
+    margin-left: 10px;
+    font-family: Roboto, Arial;
+    font-size: 14px;
+    outline: none;
+}
+
+.gg-icon {
+    height: 30px;
+}
+
+.more-action-account {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.more-action-account p {
+    font-size: 15px;
+}
+
+.forget-password-p {
+    color: #1677ff;
+}
+
+.sigin-button {
+    color: white;
+    background-color: #1677ff;
+    border: 1px solid, #d9d9d9;
+    border-radius: 8px;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.gg-sigin-option-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.gg-sigin-option-container div {
+    height: 0px;
+    border-top: 0.1px solid #d9d9d9;
+    flex: 1;
+}
+
+.signin-gg-container {
+    display: flex;
+    border: 1px solid, #d9d9d9;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 0;
+    margin-bottom: 25px;
+}
+
+.contact-p {
+    text-align: center;
+    font-size: 15px;
+}
+
+.contact-p span {
+    color: #1677ff;
+    font-weight: 500;
+}
