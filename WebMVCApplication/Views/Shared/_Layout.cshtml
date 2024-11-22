@@ -4,46 +4,178 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebMVCApplication</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+          rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebMVCApplication.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebMVCApplication</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+   <header>
+        <div class="header">
+            <div class="header-left-side">
+                <img src="~/icons/logo_sider-Bi2ymloF.png" />
+                <p>Student Attendance Management System</p>
+            </div>
+            <div class="header-right-side">
+                <div class="header-progress-tracking header-right-side-item">
+                </div>
+                <div class="header-notification header-right-side-item">
+                    <i class="fa-regular fa-bell"></i>
+                    <div class="notification-popup">
+                        <div class="notification-popup-title">
+                            <span class="notification-popup-title-content">
+                                Notification
+                            </span>
+                        </div>
+                        <div class="notification-popup-body">
+                            <i class="fa-solid fa-inbox" style="color: rgb(230,230,230);"></i>
+                            <span class="notification-popup-body-content">
+                                No Notification Found
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <img class="header-avartar header-right-side-item" src="~/img/decoration-Bhb7fEp8.png">
+                <div class="header-user-info header-right-side-item">
+                    <p class="header-user-name">ADMIN</p>
+                    <p class="header-user-role">Admin</p>
+                </div>
+                <div class="header-more-action header-right-side-item">
+                    <i class="fa-solid fa-angle-down"></i>
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <div class="sidebar">
+        <div class="sidebar-item-container">
+            <div class="sidebar-home sidebar-item">
+                <i class="fa-solid fa-house"></i>
+                <p>Home</p>
+            </div>
+        </div>
+
+        <div class="sidebar-item-container">
+            <div class="sidebar-account sidebar-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <p>Account</p>
+            </div>
+        </div>
+
+        <div class="sidebar-item-container">
+            <div class="sidebar-class sidebar-item">
+                <i class="fa-solid fa-book"></i>
+                <p>Class</p>
+            </div>
+        </div>
+
+        <div class="sidebar-item-container">
+            <div class="sidebar-schedule sidebar-item">
+                <i class="fa-solid fa-calendar-days"></i>
+                <p>Schedule</p>
+            </div>
+        </div>
+
+        <div class="sidebar-item-container">
+            <div class="sidebar-semester sidebar-item">
+                <i class="fa-solid fa-calendar"></i>
+                <p>Semester</p>
+            </div>
+        </div>
+
+        <div class="sidebar-item-container">
+            <div class="sidebar-room sidebar-item">
+                <i class="fa-solid fa-door-open"></i>
+                <p>Room</p>
+            </div>
+        </div>
+
+        <div class="sidebar-item-container">
+            <div class="sidebar-subject sidebar-item">
+                <i class="fa-solid fa-book-open"></i>
+                <p>Subject</p>
+            </div>
+        </div>
+
+        <div class="sidebar-item-container">
+            <div class="sidebar-slot sidebar-item">
+                <i class="fa-solid fa-clock"></i>
+                <p>Slot</p>
+            </div>
+        </div>
+
+        <div class="sidebar-item-container">
+            <div class="sidebar-module sidebar-item">
+                <i class="fa-solid fa-grip"></i>
+                <p>Module</p>
+            </div>
+        </div>
+
+        <div class="sidebar-item-container">
+            <div class="sidebar-settings sidebar-item">
+                <i class="fa-solid fa-gear"></i>
+                <p>System</p>
+            </div>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - WebMVCApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <main style="margin-top:100px; margin-left: 250px; width: 100%; height: 100%;" role="main">
+        @RenderBody()
+    </main>
+
+    <div class="progress-tracking-popup-wrap">
+        <div class="popup-content-container">
+            <div class="progress-tracking-popup">
+                <button class="progress-tracking-popup-close">
+                    <i class="fa-solid fa-x" style="color: #bababa;"></i>
+                </button>
+
+                <div class="progress-tracking-popup-header">
+                    Progress Details
+                </div>
+
+                <div class="progress-tracking-popup-body">
+                    No Data
+                </div>
+
+                <div class="progress-tracking-popup-footer">
+                    <button class="progress-tracking-popup-footer-cancel">
+                        <span>
+                            Cancel
+                        </span>
+                    </button>
+                    <button class="progress-tracking-popup-footer-ok">
+                        <span>
+                            Ok
+                        </span>
+                    </button>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
+    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <script>
+        $(".header-progress-tracking").click(function () {
+            $(".progress-tracking-popup-wrap").addClass("active");
+        });
+
+        function closePopup() {
+            $(".progress-tracking-popup-wrap").removeClass("active");
+        };
+
+        $(".progress-tracking-popup-close").click(_ => closePopup());
+        $(".progress-tracking-popup-footer-cancel").click(_ => closePopup());
+        $(".progress-tracking-popup-footer-ok").click(_ => closePopup());
+    </script>
 </body>
 </html>

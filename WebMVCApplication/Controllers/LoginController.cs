@@ -19,7 +19,7 @@ namespace WebMVCApplication.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string Username, string Password)
+        public async Task<IActionResult> Index([FromForm]string Username, [FromForm]string Password)
         {
             var result = await _authService.Login(Username, Password);
             if (result.IsSuccess)

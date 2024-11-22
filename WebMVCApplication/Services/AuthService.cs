@@ -67,16 +67,17 @@ public class AuthService : IAuthService
             new Claim(ClaimTypes.NameIdentifier, resultPropery.GetProperty("id").GetString() ?? ""),
             new Claim("StudentId", resultPropery.GetProperty("studentID").GetString() ?? ""),
             new Claim("EmployeeId", resultPropery.GetProperty("employeeID").GetString() ?? ""),
+            new Claim("email", resultPropery.GetProperty("email").GetString() ?? ""),
             new Claim("PhoneNumber", resultPropery.GetProperty("phoneNumber").GetString() ?? ""),
-            new Claim("PhoneNumberConfirmed", resultPropery.GetProperty("phoneNumberConfirmed").GetString() ?? ""),
+            new Claim("PhoneNumberConfirmed", resultPropery.GetProperty("phoneNumberConfirmed").GetRawText()),
             new Claim("Avatar", resultPropery.GetProperty("avatar").GetString() ?? ""),
             new Claim("DisplayName", resultPropery.GetProperty("displayName").GetString() ?? ""),
             new Claim("Address", resultPropery.GetProperty("address").GetString() ?? ""),
             new Claim("Dob", resultPropery.GetProperty("dob").GetString() ?? ""),
-            new Claim("Gender", resultPropery.GetProperty("gender").GetString() ?? ""),
+            new Claim("Gender", resultPropery.GetProperty("gender").GetRawText()),
             new Claim("FirstName", resultPropery.GetProperty("firstName").GetString() ?? ""),
             new Claim("LastName", resultPropery.GetProperty("lastName").GetString() ?? ""),
-            new Claim("RoleId", resultPropery.GetProperty("role").GetProperty("roleId").GetString() ?? ""),
+            new Claim("RoleId", resultPropery.GetProperty("role").GetProperty("roleId").GetRawText()),
             new Claim("Role", resultPropery.GetProperty("role").GetProperty("name").GetString() ?? "")
         };
 

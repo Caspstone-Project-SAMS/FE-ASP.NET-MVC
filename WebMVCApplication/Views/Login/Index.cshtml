@@ -11,41 +11,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
           rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/loginPage.css" />
+    <link rel="stylesheet" href="~/css/loginPage.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <style>
-        .popup-notification {
-            position: fixed;
-            top: -30px;
-            right: 100px;
-            background-color: #fff;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            padding: 15px;
-            opacity: 0;
-            transition: opacity 0.3s ease, top 0.3s ease;
-
-            display: flex;
-            flex-direction: column;
-            min-width: 200px;
-        }
-
-        .popup-notification.show {
-            top: 50px;
-            opacity: 1;
-         }
-    </style>
  </head>
  <body>
     @if (Model != null)
     {
         <div id="popup" class="popup-notification">
-            <p class="title-popup">@Model.Title</p>
+            <div class="popup-title">
+                @if (Model.IsSuccess)
+                {
+                    <i class="fa-solid fa-circle-check" style="color: #37c89d;"></i>
+                    <p class="title-popup success">@Model.Title</p>
+                }
+                else
+                {
+                    <i class="fa-solid fa-circle-xmark" style="color: #f92424;"></i>
+                    <p class="title-popup fail">@Model.Title</p>
+                }
+            </div>
             <div class="description-popup">
                 @foreach (var des in Model.Description)
                 {
-                    <p>@des</p>
+                    <p style="margin-bottom: 10px; margin-left: 5px; text-align: left">@des</p>
                 }
             </div>
         </div>
@@ -75,11 +63,11 @@
             <form method="post" action="/login">
                 <div class="email-input-container">
                     <i class="fa-regular fa-envelope"></i>
-                    <input id="Username" class="input-field" type="text" placeholder="Email or username" />
+                    <input name="Username" class="input-field" type="text" placeholder="Email or username" />
                 </div>
                 <div class="password-input-container">
                     <i class="fa-solid fa-lock"></i>
-                    <input id="Password" class="input-field" type="password" placeholder="Input password" />
+                    <input name="Password" class="input-field" type="password" placeholder="Input password" />
                     <i class="fa-regular fa-eye"></i>
                 </div>
                 <div class="more-action-account">
@@ -116,7 +104,7 @@
 
                 setTimeout(function () {
                     popup.removeClass("show");
-                }, 3000);
+                }, 30000);
             }
         })
     </script>

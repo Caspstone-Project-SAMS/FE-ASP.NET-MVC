@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|d:\\documentation\\capstone project\\5. fe - asp.net mvc\\webmvcapplication\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|solutionrelative:webmvcapplication\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|d:\\documentation\\capstone project\\5. fe - asp.net mvc\\webmvcapplication\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|solutionrelative:webmvcapplication\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|d:\\documentation\\capstone project\\5. fe - asp.net mvc\\webmvcapplication\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|solutionrelative:webmvcapplication\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|d:\\documentation\\capstone project\\5. fe - asp.net mvc\\webmvcapplication\\models\\serviceresponsevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|solutionrelative:webmvcapplication\\models\\serviceresponsevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|d:\\documentation\\capstone project\\5. fe - asp.net mvc\\webmvcapplication\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|solutionrelative:webmvcapplication\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|d:\\documentation\\capstone project\\5. fe - asp.net mvc\\webmvcapplication\\wwwroot\\css\\loginpage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|solutionrelative:webmvcapplication\\wwwroot\\css\\loginpage.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|d:\\documentation\\capstone project\\5. fe - asp.net mvc\\webmvcapplication\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|solutionrelative:webmvcapplication\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,67 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ServiceResponseVM.cs",
-              "DocumentMoniker": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Models\\ServiceResponseVM.cs",
-              "RelativeDocumentMoniker": "WebMVCApplication\\Models\\ServiceResponseVM.cs",
-              "ToolTip": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Models\\ServiceResponseVM.cs",
-              "RelativeToolTip": "WebMVCApplication\\Models\\ServiceResponseVM.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAWwBEAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T08:56:57.289Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "WebMVCApplication\\Services\\AuthService.cs",
-              "ToolTip": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Services\\AuthService.cs",
-              "RelativeToolTip": "WebMVCApplication\\Services\\AuthService.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAA7wC8AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-16T08:48:01.596Z",
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "WebMVCApplication\\wwwroot\\css\\site.css",
+              "ToolTip": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "WebMVCApplication\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAABQBAAAAAAAAAAAgwFEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-22T07:35:14.329Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "WebMVCApplication\\Controllers\\LoginController.cs",
-              "ToolTip": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "WebMVCApplication\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAiwBMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T12:03:29.834Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Views\\Login\\Index.cshtml",
-              "RelativeDocumentMoniker": "WebMVCApplication\\Views\\Login\\Index.cshtml",
-              "ToolTip": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Views\\Login\\Index.cshtml",
-              "RelativeToolTip": "WebMVCApplication\\Views\\Login\\Index.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAB8AAAAJAAAAAAAAAA==",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "WebMVCApplication\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "WebMVCApplication\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAuwB4AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-15T07:35:27.832Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "loginPage.css",
-              "DocumentMoniker": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\wwwroot\\css\\loginPage.css",
-              "RelativeDocumentMoniker": "WebMVCApplication\\wwwroot\\css\\loginPage.css",
-              "ToolTip": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\wwwroot\\css\\loginPage.css",
-              "RelativeToolTip": "WebMVCApplication\\wwwroot\\css\\loginPage.css",
-              "ViewState": "AgIAABEAAAAAAAAAAAAiwB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-16T07:34:47.759Z",
+              "WhenOpened": "2024-11-17T09:05:35.882Z",
               "EditorCaption": ""
             }
           ]

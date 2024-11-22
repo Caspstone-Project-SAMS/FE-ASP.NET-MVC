@@ -2,21 +2,342 @@
     box-sizing: border-box;
 }
 
+p {
+    font-family: Roboto, Arial;
+    margin: 0;
+}
+
 html {
   font-size: 14px;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   html {
     font-size: 16px;
   }
-}
+}*/
 
 html {
   position: relative;
   min-height: 100%;
 }
 
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+
 body {
-  margin-bottom: 60px;
+    background-color: rgb(244 244 244);
+    position: relative;
+}
+
+
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+
+    padding: 8px;
+    width: 200px;
+    background-color: white;
+
+    position: fixed;
+    left: 0px;
+    top: 66px;
+    bottom: 0px;
+
+    z-index: 100;
+}
+.sidebar i {
+    font-size: 10px;
+}
+.sidebar p {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+    flex: 1;
+    margin-left: 10px;
+}
+.sidebar-item {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    align-items: center;
+}
+.sidebar-item-container {
+    padding: 4px 20px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+}
+.sidebar-item-container:hover {
+    cursor: pointer;
+    background-color: rgb(244 244 244);
+}
+
+
+
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 65px;
+    background-color: white;
+    border-bottom: 1px solid rgb(217, 217, 217);
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+}
+
+.header-left-side {
+    display: flex;
+    flex-direction: row;
+}
+
+.header-left-side img {
+    width: 200px;
+    height: auto;
+    margin: 10px 0px;
+}
+
+.header-left-side p {
+    font-size: 1.688rem;
+    font-weight: 500;
+    white-space: nowrap;
+    align-content: center;
+}
+
+.header-right-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header-right-side-item {
+    margin-right: 20px;
+}
+
+.header-progress-tracking {
+    background-color: none;
+    border: 4px solid rgba(0, 0, 0, .1);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.header-progress-tracking {
+    cursor: pointer;
+}
+
+.header-notification {
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+.header-notification i {
+    font-size: 16px;
+}
+
+.header-avartar {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 50%;
+}
+
+.header-user-name {
+    font-weight: 500;
+}
+
+.header-user-role {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.header-more-action i {
+    font-size: 22px;
+}
+
+.header-more-action i:hover{
+    color: #74C0FC;
+    cursor: pointer;
+}
+
+
+
+
+
+.progress-tracking-popup-wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    overflow: auto;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.progress-tracking-popup-wrap.active {
+    opacity: 1;
+    pointer-events: auto;
+    transition: 0.4s ease;
+}
+
+.popup-content-container {
+    width: 600px;
+    transform-origin: 824px -65px;
+
+    margin: 0 auto;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    list-style: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    pointer-events: none;
+    position: relative;
+    top: 100px;
+    max-width: calc(100vw - 32px);
+    padding-bottom: 24px;
+}
+
+.progress-tracking-popup {
+    position: relative;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    pointer-events: auto;
+    padding: 20px 24px;
+}
+
+.progress-tracking-popup-close {
+    position: absolute;
+    top: 12px;
+    inset-inline-end: 12px;
+    z-index: 1010;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.45);
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    background: transparent;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+.progress-tracking-popup-header {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.88);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.progress-tracking-popup-footer {
+    text-align: end;
+    background: transparent;
+    margin-top: 12px;
+    padding: 0;
+    border-top: none;
+    border-radius: 0;
+}
+
+.progress-tracking-popup-footer-cancel {
+    background: transparent;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    height: 32px;
+    padding: 4px 15px;
+
+    border-color: #d9d9d9;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+}
+
+.progress-tracking-popup-footer-ok {
+    color: #fff;
+    background: #1677ff;
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    height: 32px;
+    padding: 4px 15px;
+
+    border: 1px solid transparent;
+    border-radius: 6px;
+}
+
+.progress-tracking-popup-body {
+    color: rgba(0, 0, 0, 0.45);
+    min-height: 100px;
+
+    flex-wrap: wrap;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+
+
+.notification-popup {
+    position: absolute;
+    top: 50px;
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 4px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),0 3px 6px -4px rgba(0, 0, 0, 0.12),0 9px 28px 8px rgba(0, 0, 0, 0.05)
+}
+
+.notification-popup-title {
+    padding-left: 15px;
+}
+
+.notification-popup-title span {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.notification-popup-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+}
+
+.notification-popup-body span {
+    text-align: center;
+    white-space: nowrap;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.notification-popup-body i {
+    font-size: 70px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
