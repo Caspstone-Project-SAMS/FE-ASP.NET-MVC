@@ -24,12 +24,13 @@ namespace WebMVCApplication.Controllers
             var result = await _authService.Login(Username, Password);
             if (result.IsSuccess)
             {
-                //return RedirectToAction("index", "login");
-                return View(new ResultViewModel
+                var resultViewModel = new ResultViewModel
                 {
                     IsSuccess = result.IsSuccess,
                     Title = result.Title ?? "Success",
-                });
+                };
+
+                return RedirectToAction("index", "login");
             }
             else
             {

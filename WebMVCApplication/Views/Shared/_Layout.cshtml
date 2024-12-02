@@ -13,6 +13,30 @@
 </head>
 <body>
 
+    @if (Model != null)
+    {
+        <div id="popup" class="popup-notification">
+            <div class="popup-title">
+                @if (Model.IsSuccess)
+                {
+                    <i class="fa-solid fa-circle-check" style="color: #37c89d;"></i>
+                    <p class="title-popup success">@Model.Title</p>
+                }
+                else
+                {
+                    <i class="fa-solid fa-circle-xmark" style="color: #f92424;"></i>
+                    <p class="title-popup fail">@Model.Title</p>
+                }
+            </div>
+            <div class="description-popup">
+                @foreach (var des in Model.Description)
+                {
+                    <p style="margin-bottom: 10px; margin-left: 5px; text-align: left">@des</p>
+                }
+            </div>
+        </div>
+    }
+
    <header>
         <div class="header">
             <div class="header-left-side">
@@ -22,9 +46,11 @@
             <div class="header-right-side">
                 <div class="header-progress-tracking header-right-side-item">
                 </div>
-                <div class="header-notification header-right-side-item">
-                    <i class="fa-regular fa-bell"></i>
-                    <div class="notification-popup">
+                <div class="header-right-side-item">
+                    <div class="header-notification">
+                        <i class="fa-regular fa-bell"></i>
+                    </div>
+                    <div class="notification-popup" style="display: none;">
                         <div class="notification-popup-title">
                             <span class="notification-popup-title-content">
                                 Notification
@@ -43,15 +69,26 @@
                     <p class="header-user-name">ADMIN</p>
                     <p class="header-user-role">Admin</p>
                 </div>
-                <div class="header-more-action header-right-side-item">
-                    <i class="fa-solid fa-angle-down"></i>
+                <div class="header-right-side-item">
+                    <div class="header-more-action">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                    <div class="more-action-popup-position" style="display:none;">
+                        <div class="more-action-popup-container">
+                            <div class="popup-triangle"></div>
+                            <div class="more-action-popup-content">
+                                <span>Home</span>
+                                <span id="logout-button">Log out</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
     <div class="sidebar">
-        <div class="sidebar-item-container">
+        <div class="sidebar-item-container selected">
             <div class="sidebar-home sidebar-item">
                 <i class="fa-solid fa-house"></i>
                 <p>Home</p>
@@ -157,6 +194,8 @@
         </div>
     </div>
     
+    <form id="logoutForm" action="logout" method="post">
+    </form>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -165,6 +204,19 @@
 
 
     <script>
+        $(document).ready(function (){
+            var popup = $("#popup");
+            if (popup.length) {
+                setTimeout(function () {
+                    popup.addClass("show");
+                }, 50);
+
+                setTimeout(function () {
+                    popup.removeClass("show");
+                }, 30000);
+            }
+        })
+
         $(".header-progress-tracking").click(function () {
             $(".progress-tracking-popup-wrap").addClass("active");
         });
@@ -176,6 +228,19 @@
         $(".progress-tracking-popup-close").click(_ => closePopup());
         $(".progress-tracking-popup-footer-cancel").click(_ => closePopup());
         $(".progress-tracking-popup-footer-ok").click(_ => closePopup());
+
+
+        $(".header-notification").click(function () {
+            $(".notification-popup").toggle();
+        });
+
+        $(".header-more-action").click(function () {
+            $(".more-action-popup-position").toggle();
+        });
+
+        $("#logout-button").click(function () {
+            $("#logoutForm").submit();
+        });
     </script>
 </body>
 </html>

@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebMVCApplication.Models;
 
 namespace WebMVCApplication.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -13,6 +15,8 @@ namespace WebMVCApplication.Controllers
             _logger = logger;
         }
 
+        [Route("/")]
+        [Route("/home")]
         public IActionResult Index()
         {
             return View();
