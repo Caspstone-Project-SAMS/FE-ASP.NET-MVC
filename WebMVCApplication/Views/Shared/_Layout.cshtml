@@ -1,8 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using WebMVCApplication.Common
+@model WebMVCApplication.Models.ResultViewModel
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> *@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9, maximum-scale=1.5, user-scalable=yes">
     <title>@ViewData["Title"] - WebMVCApplication</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
           rel="stylesheet" />
@@ -10,26 +14,27 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebMVCApplication.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @RenderSection("PageContent", required: false)
 </head>
 <body>
 
-    @if (Model != null)
+    @if (Model?.PopupNotification != null)
     {
         <div id="popup" class="popup-notification">
             <div class="popup-title">
-                @if (Model.IsSuccess)
+                @if (Model.PopupNotification.IsSuccess)
                 {
                     <i class="fa-solid fa-circle-check" style="color: #37c89d;"></i>
-                    <p class="title-popup success">@Model.Title</p>
+                    <p class="title-popup success">@Model.PopupNotification.Title</p>
                 }
                 else
                 {
                     <i class="fa-solid fa-circle-xmark" style="color: #f92424;"></i>
-                    <p class="title-popup fail">@Model.Title</p>
+                    <p class="title-popup fail">@Model.PopupNotification.Title</p>
                 }
             </div>
             <div class="description-popup">
-                @foreach (var des in Model.Description)
+                @foreach (var des in Model.PopupNotification.Description)
                 {
                     <p style="margin-bottom: 10px; margin-left: 5px; text-align: left">@des</p>
                 }
@@ -64,10 +69,11 @@
                         </div>
                     </div>
                 </div>
-                <img class="header-avartar header-right-side-item" src="~/img/decoration-Bhb7fEp8.png">
+                
+                <img class="header-avartar header-right-side-item" src="@(Model?.LoginUser?.Avatar ?? Url.Content("~/img/decoration-Bhb7fEp8.png"))" alt="User Avatar")>
                 <div class="header-user-info header-right-side-item">
-                    <p class="header-user-name">ADMIN</p>
-                    <p class="header-user-role">Admin</p>
+                    <p class="header-user-name">@(Model?.LoginUser?.UserName ?? "User")</p>
+                    <p class="header-user-role">@Model?.LoginUser?.UserRole?.ToUpper()</p>
                 </div>
                 <div class="header-right-side-item">
                     <div class="header-more-action">
@@ -88,78 +94,114 @@
     </header>
 
     <div class="sidebar">
-        <div class="sidebar-item-container selected">
+        <div id="sidebar-home" class="sidebar-item-container selected">
             <div class="sidebar-home sidebar-item">
                 <i class="fa-solid fa-house"></i>
                 <p>Home</p>
             </div>
         </div>
 
-        <div class="sidebar-item-container">
-            <div class="sidebar-account sidebar-item">
-                <i class="fa-solid fa-user-gear"></i>
-                <p>Account</p>
+        @if (Model?.LoginUser?.UserRole == UserRole.ADMIN)
+        {
+            <div id="sidebar-account" class="sidebar-item-container">
+                <div class="sidebar-account sidebar-item">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <p>Account</p>
+                    <i id="icon-angle" class="icon angle-down"></i>
+                </div>
             </div>
-        </div>
-
-        <div class="sidebar-item-container">
+            <div id="sidebar-account-menu" class="sidebar-account-menu">
+                <span>Student</span>
+                <span>Teacher</span>
+            </div>
+        }
+        
+        <div id="sidebar-class" class="sidebar-item-container">
             <div class="sidebar-class sidebar-item">
                 <i class="fa-solid fa-book"></i>
                 <p>Class</p>
             </div>
         </div>
 
-        <div class="sidebar-item-container">
-            <div class="sidebar-schedule sidebar-item">
-                <i class="fa-solid fa-calendar-days"></i>
-                <p>Schedule</p>
+        @if (Model?.LoginUser?.UserRole == UserRole.ADMIN)
+        {
+            <div id="sidebar-schedule" class="sidebar-item-container">
+                <div class="sidebar-schedule sidebar-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <p>Schedule</p>
+                </div>
             </div>
-        </div>
-
-        <div class="sidebar-item-container">
-            <div class="sidebar-semester sidebar-item">
-                <i class="fa-solid fa-calendar"></i>
-                <p>Semester</p>
+        }
+        @if (Model?.LoginUser?.UserRole == UserRole.LECTURER)
+        {
+            <div id="sidebar-calendar" class="sidebar-item-container">
+                <div class="sidebar-schedule sidebar-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <p>Calendar</p>
+                </div>
             </div>
-        </div>
+        }
 
-        <div class="sidebar-item-container">
-            <div class="sidebar-room sidebar-item">
-                <i class="fa-solid fa-door-open"></i>
-                <p>Room</p>
+        @if (Model?.LoginUser?.UserRole == UserRole.ADMIN)
+        {
+            <div id="sidebar-semester" class="sidebar-item-container">
+                <div class="sidebar-semester sidebar-item">
+                    <i class="fa-solid fa-calendar"></i>
+                    <p>Semester</p>
+                </div>
             </div>
-        </div>
 
-        <div class="sidebar-item-container">
-            <div class="sidebar-subject sidebar-item">
-                <i class="fa-solid fa-book-open"></i>
-                <p>Subject</p>
+            <div id="sidebar-room" class="sidebar-item-container">
+                <div class="sidebar-room sidebar-item">
+                    <i class="fa-solid fa-door-open"></i>
+                    <p>Room</p>
+                </div>
             </div>
-        </div>
 
-        <div class="sidebar-item-container">
-            <div class="sidebar-slot sidebar-item">
-                <i class="fa-solid fa-clock"></i>
-                <p>Slot</p>
+            <div id="sidebar-subject" class="sidebar-item-container">
+                <div class="sidebar-subject sidebar-item">
+                    <i class="fa-solid fa-book-open"></i>
+                    <p>Subject</p>
+                </div>
             </div>
-        </div>
 
-        <div class="sidebar-item-container">
+            <div id="sidebar-slot" class="sidebar-item-container">
+                <div class="sidebar-slot sidebar-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <p>Slot</p>
+                </div>
+            </div>
+        }
+
+        <div id="sidebar-module" class="sidebar-item-container">
             <div class="sidebar-module sidebar-item">
                 <i class="fa-solid fa-grip"></i>
                 <p>Module</p>
             </div>
         </div>
 
-        <div class="sidebar-item-container">
-            <div class="sidebar-settings sidebar-item">
-                <i class="fa-solid fa-gear"></i>
-                <p>System</p>
+        @if (Model?.LoginUser?.UserRole == UserRole.ADMIN)
+        {
+            <div id="sidebar-system" class="sidebar-item-container">
+                <div class="sidebar-settings sidebar-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <p>System</p>
+                </div>
             </div>
-        </div>
+        }
+
+        @if (Model?.LoginUser?.UserRole == UserRole.LECTURER)
+        {
+            <div id="sidebar-account-setting" class="sidebar-item-container">
+                <div class="sidebar-account sidebar-item">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <p>Account</p>
+                </div>
+            </div>
+        }
     </div>
 
-    <main style="margin-top:100px; margin-left: 250px; width: 100%; height: 100%;" role="main">
+    <main role="main">
         @RenderBody()
     </main>
 
@@ -213,16 +255,18 @@
 
                 setTimeout(function () {
                     popup.removeClass("show");
-                }, 30000);
+                }, 3000);
             }
         })
 
         $(".header-progress-tracking").click(function () {
             $(".progress-tracking-popup-wrap").addClass("active");
+            $(".progress-tracking-popup").addClass("active");
         });
 
         function closePopup() {
             $(".progress-tracking-popup-wrap").removeClass("active");
+            $(".progress-tracking-popup").removeClass("active");
         };
 
         $(".progress-tracking-popup-close").click(_ => closePopup());
@@ -240,6 +284,11 @@
 
         $("#logout-button").click(function () {
             $("#logoutForm").submit();
+        });
+
+        $("#sidebar-account").click(function () {
+            $("#icon-angle").toggleClass("angle-down angle-up");
+            $("#sidebar-account-menu").toggleClass("open");
         });
     </script>
 </body>

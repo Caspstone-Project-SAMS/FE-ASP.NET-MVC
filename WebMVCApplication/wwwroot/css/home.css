@@ -1,0 +1,114 @@
+﻿body {
+}
+
+p {
+    font-family: Roboto, Arial;
+}
+
+.bold {
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
+}
+.gray {
+    color: gray;
+}
+.datetime {
+    display: flex;
+    justify-content: right;
+}
+
+.homepage-container {
+    padding: 15px;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.dashboard i{
+    font-size: 30px;
+}
+
+.dashboard-infor {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-between;
+
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}
+.dashboard-statistic {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 8px;
+
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.dashboard-recent-class {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+.dashboard-recent-class-infor {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.dashboard-recent-class-infor:hover{
+    cursor: pointer;
+    color: #1677ff;
+    border-color: #1677ff;
+}
+
+.dashboard-statistic-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+.dashboard-statistic-left .upcoming-class {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #f0e6fe;
+    padding: 20px;
+    padding-right: 40px;
+    border-radius: 6px;
+}
+.dashboard-statistic-left .statistic-class {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #e1f0fa;
+    padding: 20px;
+    padding-right: 40px;
+    border-radius: 6px;
+}
+.dashboard-statistic-right {
+    flex: 1;
+
+    padding: 20px;
+    padding-right: 40px;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    background-color: #ebfdef;
+}

@@ -14,12 +14,18 @@ namespace WebMVCApplication.Controllers
         {
             _logger = logger;
         }
-
+        
         [Route("/")]
         [Route("/home")]
-        public IActionResult Index()
+        public IActionResult Index(ResultViewModel? viewModel)
         {
-            return View();
+            if (viewModel != null)
+                viewModel.LoginUser = new LoginUser{
+                    UserRole = User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value ?? string.Empty,
+                    UserName = User.Claims.FirstOrDefault(c => c.Type == "DisplayName")?.Value,
+                    Avatar = User.Claims.FirstOrDefault(c => c.Type == "Avatar")?.Value
+                };
+            return View(viewModel);
         }
 
         public IActionResult Privacy()

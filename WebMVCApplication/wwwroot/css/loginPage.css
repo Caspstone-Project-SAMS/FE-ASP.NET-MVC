@@ -196,7 +196,6 @@ p {
 .popup-title {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-content: center;
     margin-bottom: 10px;
 }
@@ -221,4 +220,12 @@ p {
 
 .title-popup.fail {
     color: #f92424;
+}
+
+.email-input-container i {
+    align-self: center;
+}
+
+.password-input-container i {
+    align-self: center;
 }

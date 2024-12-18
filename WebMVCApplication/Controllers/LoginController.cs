@@ -24,21 +24,26 @@ namespace WebMVCApplication.Controllers
             var result = await _authService.Login(Username, Password);
             if (result.IsSuccess)
             {
-                var resultViewModel = new ResultViewModel
+                var loginResultViewModel = new ResultViewModel
                 {
-                    IsSuccess = result.IsSuccess,
-                    Title = result.Title ?? "Success",
+                    PopupNotification = new PopupNotification
+                    {
+                        IsSuccess = result.IsSuccess,
+                        Title = result.Title ?? "Success",
+                    }
                 };
-
-                return RedirectToAction("index", "login");
+                return RedirectToAction("index", "home", loginResultViewModel);
             }
             else
             {
                 return View(new ResultViewModel
                 {
-                    IsSuccess = result.IsSuccess,
-                    Title = result.Title ?? "Failed",
-                    Description = result.Errors ?? new string[0]
+                    PopupNotification = new PopupNotification
+                    {
+                        IsSuccess = result.IsSuccess,
+                        Title = result.Title ?? "Failed",
+                        Description = result.Errors ?? new string[0]
+                    }
                 });
             }
         }

@@ -33,17 +33,17 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("Admin", policy =>
     {
-        policy.Requirements.Add(new HasScopeRequirement("Admin", Configuration["Jwt:Issuer"]!));
+        policy.Requirements.Add(new HasScopeRequirement(UserRole.ADMIN, Configuration["Jwt:Issuer"]!));
     });
 
     options.AddPolicy("Lecturer", policy =>
     {
-        policy.Requirements.Add(new HasScopeRequirement("Lecturer", Configuration["Jwt:Issuer"]!));
+        policy.Requirements.Add(new HasScopeRequirement(UserRole.LECTURER, Configuration["Jwt:Issuer"]!));
     });
 
     options.AddPolicy("Student", policy =>
     {
-        policy.Requirements.Add(new HasScopeRequirement("Student", Configuration["Jwt:Issuer"]!));
+        policy.Requirements.Add(new HasScopeRequirement(UserRole.STUDENT, Configuration["Jwt:Issuer"]!));
     });
 
     options.AddPolicy("Admin Lecturer", policy =>
@@ -54,8 +54,8 @@ builder.Services.AddAuthorization(options =>
 
                 (claim.Type == "scope") &&
                 (
-                    claim.Value.Equals("Admin") ||
-                    claim.Value.Equals("Lecturer")
+                    claim.Value.Equals(UserRole.ADMIN) ||
+                    claim.Value.Equals(UserRole.LECTURER)
                 )
             );
         });

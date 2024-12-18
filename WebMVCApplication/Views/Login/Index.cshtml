@@ -15,23 +15,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
  </head>
  <body>
-    @if (Model != null)
+    @if (Model?.PopupNotification != null)
     {
         <div id="popup" class="popup-notification">
             <div class="popup-title">
-                @if (Model.IsSuccess)
+                @if (Model.PopupNotification.IsSuccess)
                 {
                     <i class="fa-solid fa-circle-check" style="color: #37c89d;"></i>
-                    <p class="title-popup success">@Model.Title</p>
+                    <p class="title-popup success">@Model.PopupNotification.Title</p>
                 }
                 else
                 {
                     <i class="fa-solid fa-circle-xmark" style="color: #f92424;"></i>
-                    <p class="title-popup fail">@Model.Title</p>
+                    <p class="title-popup fail">@Model.PopupNotification.Title</p>
                 }
             </div>
             <div class="description-popup">
-                @foreach (var des in Model.Description)
+                @foreach (var des in Model.PopupNotification.Description)
                 {
                     <p style="margin-bottom: 10px; margin-left: 5px; text-align: left">@des</p>
                 }
@@ -104,7 +104,7 @@
 
                 setTimeout(function () {
                     popup.removeClass("show");
-                }, 30000);
+                }, 3000);
             }
         })
     </script>

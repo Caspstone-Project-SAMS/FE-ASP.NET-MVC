@@ -1,7 +1,65 @@
-﻿@{
+﻿@section PageContent {
+    <link rel="stylesheet" href="~/css/home.css">
+}
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div>
-    ALOSKSJSK
+<div class="homepage-container">
+    <div class="dashboard">
+        <div class="dashboard-infor">
+            <div class="dashboard-recent-class">
+                <div class="dashboard-recent-class-title">
+                    <p class="bold">Lecturer Dashboard</p>
+                    <p>Current / Upcoming class</p>
+                </div>
+                <div class="dashboard-recent-class-infor">
+                    <i class="fa-solid fa-user-group"></i>
+                    <div style="min-width: 200px; flex: 1;">
+                        <p>Room: 305</p>
+                        <p>Slot 3: 12:30 - 14:45</p>
+                        <p>Subject: CSI106</p>
+                        <p>Class: SE1901-CSI106</p>
+                    </div>
+                    <i style="font-size: 12px;" class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="dashboard-datetime">
+                <p>Wednesday, December 18, 2024</p>
+                <p class="datetime bold">13:50:00</p>
+            </div>
+        </div>
+        <div class="dashboard-statistic">
+            <div class="dashboard-statistic-left">
+                <div class="upcoming-class">
+                    <div>
+                        <p class="gray">Upcoming class</p>
+                        <p class="bold">Done</p>
+                    </div>
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="statistic-class">
+                    <div>
+                        <p class="gray">Today class</p>
+                        <p class="bold">2/3</p>
+                    </div>
+                    <i class="fa-solid fa-tablet"></i>
+                </div>
+            </div>
+            <div class="dashboard-statistic-right">
+                <p class="gray">Subject Prepare</p>
+                <div>
+                    <p class="bold">CSI106</p>
+                    <i class="fa-solid fa-swatchbook"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="calendar">
+        Calendar
+    </div>
+    <div class="old-schedule">
+        Old-schedule
+    </div>
 </div>
