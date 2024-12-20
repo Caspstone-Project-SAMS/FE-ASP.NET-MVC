@@ -70,7 +70,7 @@ p {
     align-items: center;
     gap: 10px;
 
-    padding: 20px;
+    padding: 10px 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -220,8 +220,6 @@ p {
     border-bottom-right-radius: 5px;
 }
 
-
-
 .calendar-timetable-table {
     display: grid;
     grid-template-columns: auto repeat(7, 1fr) 20px;
@@ -252,6 +250,9 @@ p {
     height: 70px;
     border-bottom: 2px solid #ccc;
 }
+.calendar-timetable-table-header .calendar-timetable-table-day-column.current{
+    background-color: #eaf6ff;
+}
 .calendar-timetable-table-header .calendar-timetable-table-day-column span{
     align-content: end;
 }
@@ -259,6 +260,11 @@ p {
     border-top: 1px solid #ccc;
 }
 
+.calendar-timetable-table.body {
+    height: 500px;
+    overflow-y: auto;
+    grid-template-columns: auto repeat(7, 1fr);
+}
 .calendar-timetable-table-body {
     display: contents;
 }
@@ -273,6 +279,8 @@ p {
     display: grid;
     grid-template-rows: repeat(17, 60px);
     gap: 1px;
+
+    width: 69px;
 }
 .calendar-timetable-table-time-slot {
     display: flex;
@@ -287,6 +295,9 @@ p {
     line-height: 60px;
     background-color: white;
 }
+.calendar-timetable-table-day-slot.current {
+    background-color: #eaf6ff;
+}
 .calendar-timetable-table-event {
     position: absolute;
     top: 0px;
@@ -295,10 +306,10 @@ p {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: start;
 
     padding: 5px;
+    padding-bottom: 0px;
     background-color: #fff;
 
     font-size: 12px;
@@ -309,8 +320,17 @@ p {
     border: 1px solid #265985;
     border-radius: 5px;
 }
-.calendar-timetable-table-event + .calendar-timetable-table-event{
-    top: 183px;
+.calendar-timetable-table-event .slot-time {
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+.calendar-timetable-table-event .slot-number{
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+}
+.calendar-timetable-table-event + .calendar-timetable-table-event {
+    top: 180px;
 }
 .calendar-timetable-table-event::before {
     content: '';
@@ -322,12 +342,13 @@ p {
     border-radius: 50%;
     background-color: #555;
 }
-.calendar-timetable-table-event[data-status="active"]::before {
+.calendar-timetable-table-event[data-status="future"]::before {
     background-color: orange;
 }
-.calendar-timetable-table-event[data-status="completed"]::before {
-    background-color: green;
+.calendar-timetable-table-event[data-status="active"]::before {
+    background-color: rgb(36, 209, 100);
 }
+
 
 @media screen and (min-width: 1890px) {
     .calendar-timetable-table {
@@ -350,4 +371,110 @@ p {
     .calendar-timetable-table-day-column {
         gap: 3px;
     }
+}
+@media screen and (min-height: 1000px) {
+    .calendar-timetable-table.body {
+        height: 800px;
+    }
+}
+
+
+
+
+.old-schedule {
+    margin-top: 40px;
+    background-color: white;
+    border: 5px;
+    margin-bottom: 50px;
+}
+.old-schedule-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+.old-schedule-title p{
+    font-weight: 500;
+    font-size: 20px;
+}
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4; /* Light gray background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for spacing */
+    width: 300px; /* Adjust width as needed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+.search-bar input {
+  flex: 1; /* Allow input to take up available space */
+  border: none; /* Remove input border */
+  background: none; /* Transparent background */
+  outline: none; /* Remove focus outline */
+  font-size: 14px; /* Adjust font size */
+  color: #666; /* Light gray text color */
+}
+.search-bar i {
+  background: none; /* Remove button background */
+  border: none; /* Remove button border */
+  padding: 0; /* Remove default padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 12px;
+}
+
+.old-schedule-header {
+    display: grid;
+    grid-template-columns: 2fr 3fr repeat(3, 2fr) repeat(2, 3fr) 2fr;
+    gap: 10px;
+    background-color: #f6f6f6;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    padding: 15px 0;
+    padding-left: 10px;
+}
+.old-schedule-header span{
+    border-right: 1px solid #e7e7e7;
+    font-weight: 500;
+}
+.old-schedule-item {
+    display: grid;
+    grid-template-columns: 2fr 3fr repeat(3, 2fr) repeat(2, 3fr) 2fr;
+    gap: 10px;
+    border-bottom: 1px solid #e7e7e7;
+    padding: 15px 0;
+    padding-left: 10px;
+}
+.old-schedule-item span {
+    align-content: center;
+}
+.old-schedule-item div {
+    align-content: center;
+}
+.old-schedule-item .absence{
+    padding: 2px 5px;
+    font-size: 12px;
+    color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: #ffecec;
+}
+.old-schedule-item .attended{
+    padding: 2px 15px;
+    font-size: 12px;
+    font-weight: 700;
+    color: green;
+    border: 1px solid green;
+    border-radius: 5px;
+    background-color: #f6ffed;
+}
+.old-schedule-item .info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px; /* Adjust size as needed */
+  height: 30px; /* Same as width for a perfect circle */
+  border: 1px solid #ccc; /* Border color and width */
+  border-radius: 50%; /* Makes the shape circular */
+  color: #707070;
 }
