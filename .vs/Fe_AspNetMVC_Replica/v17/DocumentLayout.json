@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|d:\\documentation\\capstone project\\5. fe - asp.net mvc\\webmvcapplication\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|solutionrelative:webmvcapplication\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|d:\\documentation\\capstone project\\5. fe - asp.net mvc\\webmvcapplication\\wwwroot\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|solutionrelative:webmvcapplication\\wwwroot\\css\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|d:\\documentation\\capstone project\\5. fe - asp.net mvc\\webmvcapplication\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|solutionrelative:webmvcapplication\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|d:\\documentation\\capstone project\\5. fe - asp.net mvc\\webmvcapplication\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{12E28979-6270-4A7C-9EEF-AC7C75DEF76E}|WebMVCApplication\\WebMVCApplication.csproj|solutionrelative:webmvcapplication\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,37 +18,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "WebMVCApplication\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "WebMVCApplication\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAPwAAAAAAAAAAAAAAAkBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-18T09:26:11.903Z",
+              "Title": "home.css",
+              "DocumentMoniker": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\wwwroot\\css\\home.css",
+              "RelativeDocumentMoniker": "WebMVCApplication\\wwwroot\\css\\home.css",
+              "ToolTip": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\wwwroot\\css\\home.css",
+              "RelativeToolTip": "WebMVCApplication\\wwwroot\\css\\home.css",
+              "ViewState": "AgIAAAEBAAAAAAAAAAAqwDgBAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-12-19T12:38:21.189Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "site.css",
-              "DocumentMoniker": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "WebMVCApplication\\wwwroot\\css\\site.css",
-              "ToolTip": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "WebMVCApplication\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAAOsAAAAAAAAAAAAAAB8BAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-12-18T07:28:29.139Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "WebMVCApplication\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\DOCUMENTATION\\Capstone Project\\5. FE - ASP.NET MVC\\WebMVCApplication\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "WebMVCApplication\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAYwIwAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-19T12:38:09.576Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }

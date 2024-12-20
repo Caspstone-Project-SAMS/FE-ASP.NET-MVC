@@ -10,6 +10,11 @@ p {
     font-style: normal;
     font-size: 24px;
 }
+.medium {
+    font-weight: 500;
+    font-style: normal;
+    font-size: 24px;
+}
 .gray {
     color: gray;
 }
@@ -71,8 +76,8 @@ p {
 }
 .dashboard-recent-class-infor:hover{
     cursor: pointer;
-    color: #1677ff;
-    border-color: #1677ff;
+    color: #3a8bfc;
+    border-color: #3a8bfc;
 }
 
 .dashboard-statistic-left {
@@ -111,4 +116,238 @@ p {
     border: 1px solid #f0f0f0;
     border-radius: 6px;
     background-color: #ebfdef;
+}
+.dashboard-statistic-right .dashboard-subject-prepare{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.dashboard-subjects p + p {
+    margin-top: 15px;
+}
+
+
+
+
+.calendar {
+    margin-top: 20px;
+}
+
+.calendar-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.calendar-title-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.calendar-title-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    background-color: white;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.calendar-title-button:hover {
+    cursor: pointer;
+    color: #3a8bfc;
+    border-color: #3a8bfc;
+}
+
+.calendar-timetable {
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 20px 10px;
+}
+.calendar-timetable-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+.calendar-timetable-title-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+
+    font-size: 24px;
+    font-weight: 400;
+}
+.calendar-timetable-title-right {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+
+    font-size: 15px;
+}
+.calendar-timetable-title-button {
+    display: flex;
+    flex-direction: row;
+}
+.calendar-timetable-title-prevButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    padding: 4px 20px;
+    border: 1px solid #ccc;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.calendar-timetable-title-nextButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    padding: 4px 20px;
+    border: 1px solid #ccc;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+
+.calendar-timetable-table {
+    display: grid;
+    grid-template-columns: auto repeat(7, 1fr) 20px;
+    gap: 1px;
+    background-color: #ccc;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+.calendar-timetable-table-header {
+    display: contents;
+    background-color: white;
+}
+.calendar-timetable-table-header .calendar-timetable-table-time-column {
+    background-color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    height: 70px;
+    border-bottom: 2px solid #ccc;
+}
+.calendar-timetable-table-header .calendar-timetable-table-day-column {
+    display: grid;
+    grid-template-rows: 25px 45px;
+
+    background-color: white;
+    text-align: center;
+    font-weight: bold;
+    height: 70px;
+    border-bottom: 2px solid #ccc;
+}
+.calendar-timetable-table-header .calendar-timetable-table-day-column span{
+    align-content: end;
+}
+.calendar-timetable-table-header .calendar-timetable-table-day-column .calendar-timetable-table-day-column-seperate{
+    border-top: 1px solid #ccc;
+}
+
+.calendar-timetable-table-body {
+    display: contents;
+}
+.calendar-timetable-table-day-column {
+    position: relative;
+
+    display: grid;
+    grid-template-rows: repeat(17, 60px);
+    gap: 1px;
+}
+.calendar-timetable-table-time-column {
+    display: grid;
+    grid-template-rows: repeat(17, 60px);
+    gap: 1px;
+}
+.calendar-timetable-table-time-slot {
+    display: flex;
+    justify-content: flex-end;
+
+    width: 100%;
+    background-color: white;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.calendar-timetable-table-day-slot {
+    line-height: 60px;
+    background-color: white;
+}
+.calendar-timetable-table-event {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 91px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 5px;
+    background-color: #fff;
+
+    font-size: 12px;
+    line-height: 1.4;
+    width: 90%;
+    text-align: center;
+
+    border: 1px solid #265985;
+    border-radius: 5px;
+}
+.calendar-timetable-table-event + .calendar-timetable-table-event{
+    top: 183px;
+}
+.calendar-timetable-table-event::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #555;
+}
+.calendar-timetable-table-event[data-status="active"]::before {
+    background-color: orange;
+}
+.calendar-timetable-table-event[data-status="completed"]::before {
+    background-color: green;
+}
+
+@media screen and (min-width: 1890px) {
+    .calendar-timetable-table {
+        gap: 2px;
+    }
+    .calendar-timetable-table-time-column {
+        gap: 2px;
+    }
+    .calendar-timetable-table-day-column {
+        gap: 2px;
+    }
+}
+@media screen and (min-width: 5000px) {
+    .calendar-timetable-table {
+        gap: 3px;
+    }
+    .calendar-timetable-table-time-column {
+        gap: 3px;
+    }
+    .calendar-timetable-table-day-column {
+        gap: 3px;
+    }
 }

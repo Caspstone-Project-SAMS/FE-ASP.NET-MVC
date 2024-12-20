@@ -1,5 +1,5 @@
 ﻿@section PageContent {
-    <link rel="stylesheet" href="~/css/home.css">
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true">
 }
 
 @{
@@ -49,16 +49,344 @@
             </div>
             <div class="dashboard-statistic-right">
                 <p class="gray">Subject Prepare</p>
-                <div>
-                    <p class="bold">CSI106</p>
+                <div class="dashboard-subject-prepare">
+                    <div class="dashboard-subjects">
+                        <p class="bold">CSI106</p>
+                        <p class="bold">IoT102t</p>
+                    </div>
                     <i class="fa-solid fa-swatchbook"></i>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="calendar">
-        Calendar
+        <div class="calendar-title">
+            <div>
+                <p class="medium">Calendar</p>
+            </div>
+            <div class="calendar-title-buttons">
+                <div class="calendar-title-button">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <p>Import Record</p>
+                </div>
+                <div class="calendar-title-button">
+                    <i class="fa-solid fa-database"></i>
+                    <p>Prepare Schedule For Day</p>
+                </div>
+                <div class="calendar-title-button">
+                    <i class="fa-regular fa-image"></i>
+                    <p>Import FAP Image</p>
+                </div>
+                <div class="calendar-title-button">
+                    <i class="fa-solid fa-folder-plus"></i>
+                    <p>Import Excel</p>
+                </div>
+            </div>
+        </div>
+        <div class="calendar-timetable">
+            <div class="calendar-timetable-title">
+                <div class="calendar-timetable-title-left">
+                    <i class="fa-regular fa-calendar"></i>
+                    <p>December 16 - 22</p>
+                </div>
+                <div class="calendar-timetable-title-right">
+                    <div>Semester: FA24</div>
+                    <div class="calendar-timetable-title-button">
+                        <div class="calendar-timetable-title-prevButton">
+                            <i class="fa-solid fa-caret-left"></i>
+                            <p>Prev</p>
+                        </div>
+                        <div class="calendar-timetable-title-nextButton">
+                            <i class="fa-solid fa-caret-right"></i>
+                            <p>Next</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="calendar-timetable-table">
+                <div class="calendar-timetable-table-header">
+                    <div class="calendar-timetable-table-time-column"></div>
+                    <div class="calendar-timetable-table-day-column">
+                        <span>16 Mon</span>
+                        <div class="calendar-timetable-table-day-column-seperate"></div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <span>17 Tue</span>
+                        <div class="calendar-timetable-table-day-column-seperate"></div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <span>18 Wed</span>
+                        <div class="calendar-timetable-table-day-column-seperate"></div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <span>19 Thu</span>
+                        <div class="calendar-timetable-table-day-column-seperate"></div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <span>20 Fri</span>
+                        <div class="calendar-timetable-table-day-column-seperate"></div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <span>21 Sat</span>
+                        <div class="calendar-timetable-table-day-column-seperate"></div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <span>22 Sun</span>
+                        <div class="calendar-timetable-table-day-column-seperate"></div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column"></div>
+                </div>
+                <div class="calendar-timetable-table-body">
+                    <div class="calendar-timetable-table-time-column">
+                        <div class="calendar-timetable-table-time-slot"><span>6:00 AM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>7:00 AM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>8:00 AM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>9:00 AM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>10:00 AM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>11:00 AM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>12:00 PM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>1:00 PM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>2:00 PM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>3:00 PM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>4:00 PM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>5:00 PM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>6:00 PM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>7:00 PM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>8:00 PM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>9:00 PM</span></div>
+                        <div class="calendar-timetable-table-time-slot"><span>10:00 PM</span></div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1845-IoT102t</p>
+                            <p>Slot 1</p>
+                        </div>
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1843-IoT102t</p>
+                            <p>Slot 2</p>
+                        </div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1845-IoT102t</p>
+                            <p>Slot 1</p>
+                        </div>
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1843-IoT102t</p>
+                            <p>Slot 2</p>
+                        </div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1845-IoT102t</p>
+                            <p>Slot 1</p>
+                        </div>
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1843-IoT102t</p>
+                            <p>Slot 2</p>
+                        </div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1845-IoT102t</p>
+                            <p>Slot 1</p>
+                        </div>
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1843-IoT102t</p>
+                            <p>Slot 2</p>
+                        </div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1845-IoT102t</p>
+                            <p>Slot 1</p>
+                        </div>
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1843-IoT102t</p>
+                            <p>Slot 2</p>
+                        </div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1845-IoT102t</p>
+                            <p>Slot 1</p>
+                        </div>
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1843-IoT102t</p>
+                            <p>Slot 2</p>
+                        </div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column">
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-slot"></div>
+
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1845-IoT102t</p>
+                            <p>Slot 1</p>
+                        </div>
+                        <div class="calendar-timetable-table-event">
+                            <p>IoT102t</p>
+                            <p>302</p>
+                            <p>SE1843-IoT102t</p>
+                            <p>Slot 2</p>
+                        </div>
+                    </div>
+                    <div class="calendar-timetable-table-day-column"></div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <div class="old-schedule">
         Old-schedule
     </div>
