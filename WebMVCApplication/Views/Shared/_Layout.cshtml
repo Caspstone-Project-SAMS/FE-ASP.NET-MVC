@@ -94,7 +94,7 @@
     </header>
 
     <div class="sidebar">
-        <div id="sidebar-home" class="sidebar-item-container selected">
+        <div id="sidebar-home" class="sidebar-item-container">
             <div class="sidebar-home sidebar-item">
                 <i class="fa-solid fa-house"></i>
                 <p>Home</p>
@@ -111,8 +111,8 @@
                 </div>
             </div>
             <div id="sidebar-account-menu" class="sidebar-account-menu">
-                <span>Student</span>
-                <span>Teacher</span>
+                <span class="student">Student</span>
+                <span class="teacher">Teacher</span>
             </div>
         }
         
@@ -247,6 +247,8 @@
 
     <script>
         $(document).ready(function (){
+            setSelectedPage("@ViewData["Page"]");
+
             var popup = $("#popup");
             if (popup.length) {
                 setTimeout(function () {
@@ -290,6 +292,59 @@
             $("#icon-angle").toggleClass("angle-down angle-up");
             $("#sidebar-account-menu").toggleClass("open");
         });
+
+
+        function setSelectedPage(page){
+            switch(page){
+                case "HomePage":
+                    $("#sidebar-home").addClass("selected");
+                    break;
+                case "ClassPage":
+                    $("#sidebar-class").addClass("selected");
+                    break;
+                case "SchedulePage":
+                    $("#sidebar-schedule").addClass("selected");
+                    break;
+                case "CalendarPage":
+                    $("#sidebar-calendar").addClass("selected");
+                    break;
+                case "SemesterPage":
+                    $("#sidebar-semester").addClass("selected");
+                    break;
+                case "RoomPage":
+                    $("#sidebar-room").addClass("selected");
+                    break;
+                case "SubjectPage":
+                    $("#sidebar-subject").addClass("selected");
+                    break;
+                case "SlotPage":
+                    $("#sidebar-slot").addClass("selected");
+                    break;
+                case "ModulePage":
+                    $("#sidebar-module").addClass("selected");
+                    break;
+                case "SystemPage":
+                    $("#sidebar-system").addClass("selected");
+                    break;
+                case "AccountSettingPage":
+                    $("#sidebar-account-setting").addClass("selected");
+                    break;
+                case "StudentPage":
+                    $("#sidebar-account").addClass("menu-selected");
+                    var $accountMenu = $("#sidebar-account-menu");
+                    $accountMenu.find(".student").addClass("selected");
+                    $accountMenu.addClass("open");
+                    break;
+                case "TeacherPage":
+                    $("#sidebar-account").addClass("menu-selected");
+                    var $accountMenu = $("#sidebar-account-menu");
+                    $accountMenu.find(".teacher").addClass("selected");
+                    $accountMenu.addClass("open");
+                    break;
+                default:
+                    break;
+            }
+        }
     </script>
 </body>
 </html>

@@ -212,6 +212,7 @@
                             <p class="slot-info">SE1845-IoT102t</p>
                             <p class="slot-number">Slot 1</p>
                         </div>
+                        <div class="current-time-line"></div>
                     </div>
                     <div class="calendar-timetable-table-day-column">
                         <div class="calendar-timetable-table-day-slot"></div>
@@ -246,6 +247,7 @@
                             <p class="slot-info">SE1845-IoT102t</p>
                             <p class="slot-number">Slot 1</p>
                         </div>
+                        <div class="current-time-line"></div>
                     </div>
                     <div class="calendar-timetable-table-day-column">
                         <div class="calendar-timetable-table-day-slot current"></div>
@@ -280,6 +282,7 @@
                             <p class="slot-info">SE1845-IoT102t</p>
                             <p class="slot-number">Slot 1</p>
                         </div>
+                        <div class="current-time-line active"></div>
                     </div>
                     <div class="calendar-timetable-table-day-column">
                         <div class="calendar-timetable-table-day-slot"></div>
@@ -314,6 +317,7 @@
                             <p class="slot-info">SE1845-IoT102t</p>
                             <p class="slot-number">Slot 1</p>
                         </div>
+                        <div class="current-time-line"></div>
                     </div>
                     <div class="calendar-timetable-table-day-column">
                         <div class="calendar-timetable-table-day-slot"></div>
@@ -348,6 +352,7 @@
                             <p class="slot-info">SE1845-IoT102t</p>
                             <p class="slot-number">Slot 1</p>
                         </div>
+                        <div class="current-time-line"></div>
                     </div>
                     <div class="calendar-timetable-table-day-column">
                         <div class="calendar-timetable-table-day-slot"></div>
@@ -382,6 +387,7 @@
                             <p class="slot-info">SE1845-IoT102t</p>
                             <p class="slot-number">Slot 1</p>
                         </div>
+                        <div class="current-time-line"></div>
                     </div>
                     <div class="calendar-timetable-table-day-column">
                         <div class="calendar-timetable-table-day-slot"></div>
@@ -416,6 +422,7 @@
                             <p class="slot-info">SE1845-IoT102t</p>
                             <p class="slot-number">Slot 1</p>
                         </div>
+                        <div class="current-time-line"></div>
                     </div>
                 </div>
             </div>
@@ -428,7 +435,7 @@
             <div class="old-schedule-title">
                 <p>Old Schedule (Last 5 days)</p>
                 <div class="search-bar">
-                    <input type="text" placeholder="Search by class code" />
+                    <input onchange="filterOldSchedules(this)" type="text" placeholder="Search by class code" />
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
@@ -445,7 +452,7 @@
             <div class="old-schedule-list">
                 <div class="old-schedule-item">
                     <span>16/12/2024</span>
-                    <span>SE1845-IoT102t</span>
+                    <span class="class-code">SE1845-IoT102t</span>
                     <span>IoT102t</span>
                     <span>302</span>
                     <span>1</span>
@@ -461,7 +468,7 @@
                 </div>
                 <div class="old-schedule-item">
                     <span>16/12/2024</span>
-                    <span>SE1845-IoT102t</span>
+                    <span class="class-code">SE1845-IoT102t</span>
                     <span>IoT102t</span>
                     <span>302</span>
                     <span>1</span>
@@ -477,7 +484,7 @@
                 </div>
                 <div class="old-schedule-item">
                     <span>16/12/2024</span>
-                    <span>SE1845-IoT102t</span>
+                    <span class="class-code">SE1845-IoT102t</span>
                     <span>IoT102t</span>
                     <span>302</span>
                     <span>1</span>
@@ -500,7 +507,7 @@
 <script>
     function checkWindowSize() {
         if ($(window).width() >= 5000) {
-            UpdateEventPosition(3); // Call your function here
+            UpdateEventPosition(3);
         }
         else if ($(window).width() >= 1890) {
             UpdateEventPosition(2);
@@ -525,6 +532,10 @@
     }
 
     function GoToAllClasses(){
+
+    }
+
+    function filterOldSchedules(classCode){
 
     }
 </script>

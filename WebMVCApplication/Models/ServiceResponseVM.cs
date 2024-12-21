@@ -4,9 +4,11 @@ namespace WebMVCApplication.Models;
 
 public class ServiceResponseVM<T> where T : class
 {
-    public bool IsSuccess { get; set; }
+    [JsonIgnore]
+    public bool IsSuccess { get; set; } = false;
     public string? Title { get; set; }
     public IEnumerable<string>? Errors { get; set; }
+    [JsonIgnore]
     public T? Result { get; set; }
 }
 

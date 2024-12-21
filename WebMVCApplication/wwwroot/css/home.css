@@ -349,6 +349,13 @@ p {
     background-color: rgb(36, 209, 100);
 }
 
+.current-time-line.active {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    border-top: 2px solid #00ff87;
+}
+
 
 @media screen and (min-width: 1890px) {
     .calendar-timetable-table {
@@ -477,4 +484,9 @@ p {
   border: 1px solid #ccc; /* Border color and width */
   border-radius: 50%; /* Makes the shape circular */
   color: #707070;
+}
+.old-schedule-item .info:hover{
+    cursor: pointer;
+    color: #3a8bfc;
+    border-color: #3a8bfc;
 }

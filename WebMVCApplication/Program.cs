@@ -14,6 +14,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IApiHelper, ApiHelper>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ISemesterService, SemesterService>();
+builder.Services.AddScoped<IClassService, ClassService>();
 
 builder.Services.AddHttpClient("MyApi", client =>
 {

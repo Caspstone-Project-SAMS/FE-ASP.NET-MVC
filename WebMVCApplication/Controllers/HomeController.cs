@@ -25,6 +25,7 @@ namespace WebMVCApplication.Controllers
                     UserName = User.Claims.FirstOrDefault(c => c.Type == "DisplayName")?.Value,
                     Avatar = User.Claims.FirstOrDefault(c => c.Type == "Avatar")?.Value
                 };
+            ViewData["Page"] = "HomePage";
             return View(viewModel);
         }
 

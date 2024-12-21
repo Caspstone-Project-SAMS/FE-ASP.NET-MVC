@@ -90,6 +90,9 @@ main {
     background-color: #e6f4ff;
     color: #1677ff;
 }
+.sidebar-item-container.menu-selected {
+    color: #1677ff;
+}
 
 .sidebar-account-menu {
     overflow: hidden;
@@ -100,16 +103,22 @@ main {
     height:auto;
 }
 .sidebar-account-menu span {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
     font-weight: 400;
     font-style: normal;
-    font-size: 12px;
-    margin: 4px;
+    font-size: 13px;
     padding-left: 48px;
     padding-right: 16px;
     white-space: nowrap;
     line-height: 36px;
     list-style-position: inside;
     list-style-type: disc;
+}
+.sidebar-account-menu span.selected{
+    background-color: #e6f4ff;
+    color: #1677ff;
 }
 
 .icon::before {
