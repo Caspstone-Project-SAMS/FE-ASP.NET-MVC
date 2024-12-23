@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
 using WebMVCApplication.Models;
 
@@ -17,14 +18,17 @@ namespace WebMVCApplication.Controllers
         
         [Route("/")]
         [Route("/home")]
-        public IActionResult Index(ResultViewModel? viewModel)
+        public IActionResult Index()
         {
-            if (viewModel != null)
-                viewModel.LoginUser = new LoginUser{
-                    UserRole = User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value ?? string.Empty,
-                    UserName = User.Claims.FirstOrDefault(c => c.Type == "DisplayName")?.Value,
-                    Avatar = User.Claims.FirstOrDefault(c => c.Type == "Avatar")?.Value
-                };
+            var viewModel = JsonConvert.DeserializeObject<ResultViewModel>(TempData["ResultViewModel"] as string ?? "");
+            if(viewModel is null) viewModel = new ResultViewModel();
+            viewModel.LoginUser = new LoginUser
+            {
+                UserRole = User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value ?? string.Empty,
+                UserName = User.Claims.FirstOrDefault(c => c.Type == "DisplayName")?.Value,
+                Avatar = User.Claims.FirstOrDefault(c => c.Type == "Avatar")?.Value
+            };
+
             ViewData["Page"] = "HomePage";
             return View(viewModel);
         }

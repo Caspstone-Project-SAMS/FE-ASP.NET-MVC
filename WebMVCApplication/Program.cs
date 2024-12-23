@@ -10,7 +10,8 @@ IConfigurationRoot Configuration = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson();
 
 builder.Services.AddScoped<IApiHelper, ApiHelper>();
 builder.Services.AddScoped<IAuthService, AuthService>();

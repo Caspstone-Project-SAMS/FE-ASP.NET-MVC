@@ -94,7 +94,7 @@
     </header>
 
     <div class="sidebar">
-        <div id="sidebar-home" class="sidebar-item-container">
+        <div id="sidebar-home" class="sidebar-item-container" onclick="navigateTo('/home')">
             <div class="sidebar-home sidebar-item">
                 <i class="fa-solid fa-house"></i>
                 <p>Home</p>
@@ -111,12 +111,12 @@
                 </div>
             </div>
             <div id="sidebar-account-menu" class="sidebar-account-menu">
-                <span class="student">Student</span>
-                <span class="teacher">Teacher</span>
+                <span class="student" onclick="navigateTo('/student')">Student</span>
+                <span class="teacher" onclick="navigateTo('/teacher')">Teacher</span>
             </div>
         }
         
-        <div id="sidebar-class" class="sidebar-item-container">
+        <div id="sidebar-class" class="sidebar-item-container" onclick="navigateTo('/class')">
             <div class="sidebar-class sidebar-item">
                 <i class="fa-solid fa-book"></i>
                 <p>Class</p>
@@ -125,7 +125,7 @@
 
         @if (Model?.LoginUser?.UserRole == UserRole.ADMIN)
         {
-            <div id="sidebar-schedule" class="sidebar-item-container">
+            <div id="sidebar-schedule" class="sidebar-item-container" onclick="navigateTo('/schedule')">
                 <div class="sidebar-schedule sidebar-item">
                     <i class="fa-solid fa-calendar-days"></i>
                     <p>Schedule</p>
@@ -134,7 +134,7 @@
         }
         @if (Model?.LoginUser?.UserRole == UserRole.LECTURER)
         {
-            <div id="sidebar-calendar" class="sidebar-item-container">
+            <div id="sidebar-calendar" class="sidebar-item-container" onclick="navigateTo('/calendar')">
                 <div class="sidebar-schedule sidebar-item">
                     <i class="fa-solid fa-calendar-days"></i>
                     <p>Calendar</p>
@@ -144,28 +144,28 @@
 
         @if (Model?.LoginUser?.UserRole == UserRole.ADMIN)
         {
-            <div id="sidebar-semester" class="sidebar-item-container">
+            <div id="sidebar-semester" class="sidebar-item-container" onclick="navigateTo('/semester')">
                 <div class="sidebar-semester sidebar-item">
                     <i class="fa-solid fa-calendar"></i>
                     <p>Semester</p>
                 </div>
             </div>
 
-            <div id="sidebar-room" class="sidebar-item-container">
+            <div id="sidebar-room" class="sidebar-item-container" onclick="navigateTo('/room')">
                 <div class="sidebar-room sidebar-item">
                     <i class="fa-solid fa-door-open"></i>
                     <p>Room</p>
                 </div>
             </div>
 
-            <div id="sidebar-subject" class="sidebar-item-container">
+            <div id="sidebar-subject" class="sidebar-item-container" onclick="navigateTo('/subject')">
                 <div class="sidebar-subject sidebar-item">
                     <i class="fa-solid fa-book-open"></i>
                     <p>Subject</p>
                 </div>
             </div>
 
-            <div id="sidebar-slot" class="sidebar-item-container">
+            <div id="sidebar-slot" class="sidebar-item-container" onclick="navigateTo('/slot')">
                 <div class="sidebar-slot sidebar-item">
                     <i class="fa-solid fa-clock"></i>
                     <p>Slot</p>
@@ -173,7 +173,7 @@
             </div>
         }
 
-        <div id="sidebar-module" class="sidebar-item-container">
+        <div id="sidebar-module" class="sidebar-item-container" onclick="navigateTo('/module')">
             <div class="sidebar-module sidebar-item">
                 <i class="fa-solid fa-grip"></i>
                 <p>Module</p>
@@ -182,7 +182,7 @@
 
         @if (Model?.LoginUser?.UserRole == UserRole.ADMIN)
         {
-            <div id="sidebar-system" class="sidebar-item-container">
+            <div id="sidebar-system" class="sidebar-item-container" onclick="navigateTo('/system')">
                 <div class="sidebar-settings sidebar-item">
                     <i class="fa-solid fa-gear"></i>
                     <p>System</p>
@@ -192,7 +192,7 @@
 
         @if (Model?.LoginUser?.UserRole == UserRole.LECTURER)
         {
-            <div id="sidebar-account-setting" class="sidebar-item-container">
+            <div id="sidebar-account-setting" class="sidebar-item-container" onclick="navigateTo('/account-setting')">
                 <div class="sidebar-account sidebar-item">
                     <i class="fa-solid fa-user-gear"></i>
                     <p>Account</p>
@@ -344,6 +344,10 @@
                 default:
                     break;
             }
+        }
+
+        function navigateTo(page){
+            window.location.href = page;
         }
     </script>
 </body>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using WebMVCApplication.Models;
 using WebMVCApplication.Services;
 
@@ -32,7 +33,8 @@ namespace WebMVCApplication.Controllers
                         Title = result.Title ?? "Success",
                     }
                 };
-                return RedirectToAction("index", "home", loginResultViewModel);
+                TempData["ResultViewModel"] = JsonConvert.SerializeObject(loginResultViewModel);
+                return RedirectToAction("index", "home");
             }
             else
             {

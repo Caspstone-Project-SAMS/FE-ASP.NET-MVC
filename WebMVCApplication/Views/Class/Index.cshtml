@@ -1,1 +1,233 @@
-﻿
+﻿@using WebMVCApplication.Common
+@using WebMVCApplication.Entities
+@model WebMVCApplication.Models.ResultViewModel
+
+@section PageContent {
+    <link rel="stylesheet" href="~/css/class.css" asp-append-version="true">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+}
+
+@{
+    ViewData["Title"] = "Class Page";
+
+    var semesterCount = 1;
+
+    var classes = ViewData["Class-list"] as List<Class> ?? new();
+    var semesters = ViewData["Semester-list"] as List<Semester> ?? new();
+    var activeSemesterId = ViewData["Active-semester"] as int?;
+}
+
+<div class="class-container">
+    <div class="class-title">
+        <p>Class</p>
+        <div class="search-bar">
+            <input onchange="" type="text" placeholder="Search by name" />
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </div>
+    <div class="class-table">
+        <div class="table-header">
+            <span>Class</span>
+            <div style="position: relative;">
+                <span style="display: flex; justify-content: space-between; align-items: center;">
+                    Semester
+                    <i class="fa-solid fa-filter" onclick="toggleFilter()"></i>
+                </span>
+                <div id="semester-filter" class="semester-filter-container">
+                    <div class="semester-list-multiselect">
+                        @foreach (var item in semesters)
+                        {
+                            var className = "semester-item";
+                            var semesterStatus = "(none)";
+                            if (item.Status == 1) 
+                            { 
+                                className += " future";
+                                semesterStatus = "(Future)";
+                            }
+                            else if (item.Status == 2)
+                            {
+                                className += " on-going";
+                                semesterStatus = "(On-going)";
+                            }
+                            else if (item.Status == 3)
+                            {
+                                className += " finished";
+                                semesterStatus = "(Finished)";
+                            }
+                            if (activeSemesterId == item.Id) className += " selected";
+                            <div id="semester-item-@semesterCount" class="@className" onclick="toggleSelection(this.id)">
+                                <input type="checkbox" value="@item.Id" disabled @(item.Id == activeSemesterId ? "checked" : "") />
+                                <p>@item.SemesterCode @semesterStatus</p>
+                            </div>
+                            semesterCount++;
+                        }
+                    </div>
+                    <div class="semester-filter-action">
+                        <button onclick="filterClass()">OK</button>
+                    </div>
+                </div>
+            </div>
+            <span>Room</span>
+            <span>Subject</span>
+            <span>Slot Type</span>
+            <span>Status</span>
+            <span>Action</span>
+            <span style="border:none;">Info</span>
+        </div>
+        <div id="table-list" class="table-list">
+            @foreach(var item in classes)
+            {
+                <div class="table-item">
+                    <span>@item.ClassCode</span>
+                    <span>@item.Semester?.SemesterCode</span>
+                    <span>@item.Room?.Name</span>
+                    <span>@item.Subject?.Name</span>
+                    <span>@item.SlotDuration</span>
+                    <div>
+                        @if(item.Status == 1){
+                            <span class="available">Available</span>
+                        }
+                        else
+                        {
+                            <span class="unavailable">Unavailable</span>
+                        }
+                    </div>
+                    <div class="action">
+                        <i class="fa-regular fa-pen-to-square edit"></i>
+                        <i class="fa-solid fa-trash delete"></i>
+                    </div>
+                    <div class="info">
+                        <i class="fa-solid fa-info"></i>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div style="height: 20px;"></div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    const $classListTable = $("#table-list");
+
+
+    function toggleFilter() {
+        $("#semester-filter").toggle();
+    }
+    function toggleSelection(itemId){
+        var $item = $("#" + itemId);
+        $item.toggleClass("selected");
+        var $checkbox = $item.find("input[type='checkbox']");
+        $checkbox.prop("checked", !$checkbox.is(":checked"));
+    }
+
+
+    function filterClass(){
+        toggleFilter();
+
+        var semesterIds = $(".semester-list-multiselect input:checked").map(function () {
+            return parseInt($(this).val(), 10);
+        }).get();
+
+        if (semesterIds.length <= 0) return;
+
+        $classListTable.empty();
+
+        // Doing it in parallel
+        Promise.all(semesterIds.map(id => getClassesAjax(id)))
+            .then(responses => {
+                // responses will be an array of all the successful responses
+                responses.forEach(response => {
+                    addClasses(response);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        // semesterIds.forEach(function(id){
+        //     getClassesAjax(id)
+        //         .then(response => {
+        //             addClasses(response);
+        //         })
+        //         .catch(error => {
+        //             console.error('Error:', error);
+        //         });
+        // });
+    }
+    function getClassesAjax(id) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: 'http://localhost/api/Class',
+                method: 'GET',
+                data: {
+                    quantity: 50,
+                    lecturerId: '@Model.LoginUser?.Id',
+                    semesterId: id
+                },
+                headers: {
+                    Authorization: `Bearer @Model.LoginUser?.Token`
+                },
+                dataType: 'json',
+                success: function (response) {
+                    resolve(response);
+                },
+                error: function (xhr, status, error) {
+                    reject({ status, error });
+                }
+            })
+        });
+    }
+    function addClasses(data){
+        console.log('Success:', data);
+        data.result.forEach(item => {
+            $classListTable.append(createNewClassItem(item));
+        });
+    }
+    function createNewClassItem(item) {
+        const $newItem = $('<div>')
+            .addClass('table-item');
+        const $classCode = $('<span>')
+            .text(item.classCode);
+        const $semesterCode = $('<span>')
+            .text(item.semester.semesterCode);
+        const $room = $('<span>')
+            .text(item.room.roomName);
+        const $subject = $('<span>')
+            .text(item.subject.subjectName);
+        const $slot = $('<span>')
+            .text((item.slotType.sessionCount * 45) + ' minutes');
+        const $statusSpan = $('<span>');
+        if (item.classStatus == 1) {
+            $statusSpan.addClass('available');
+            $statusSpan.text('Available');
+        }
+        else {
+            $statusSpan.addClass('unavailable');
+            $statusSpan.text('Unavailable');
+        }
+        const $status = $('<div>')
+            .append($statusSpan);
+        const $action = $('<div>')
+            .addClass('action')
+            .append(`
+                    <i class="fa-regular fa-pen-to-square edit"></i>
+                    <i class="fa-solid fa-trash delete"></i>
+                `);
+        const $info = $('<div>')
+            .addClass('info')
+            .append(`<i class="fa-solid fa-info"></i>`);
+
+        $newItem.append($classCode);
+        $newItem.append($semesterCode);
+        $newItem.append($room);
+        $newItem.append($subject);
+        $newItem.append($slot);
+        $newItem.append($status);
+        $newItem.append($action);
+        $newItem.append($info);
+
+        return $newItem;
+    }
+    
+</script>

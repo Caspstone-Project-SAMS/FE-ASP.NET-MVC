@@ -15,6 +15,8 @@ public class PopupNotification
 
 public class LoginUser
 {
+    public string Token { get; set; } = string.Empty;
+    public string Id { get; set; } = string.Empty;
     public string UserRole { get; set; } = string.Empty;
     public string? UserName { get; set; } = "User";
     public string? Avatar { get; set; }

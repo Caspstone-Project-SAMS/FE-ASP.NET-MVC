@@ -116,6 +116,10 @@ main {
     list-style-position: inside;
     list-style-type: disc;
 }
+.sidebar-account-menu span:hover{
+    cursor: pointer;
+    background-color: rgb(238 238 238);
+}
 .sidebar-account-menu span.selected{
     background-color: #e6f4ff;
     color: #1677ff;
