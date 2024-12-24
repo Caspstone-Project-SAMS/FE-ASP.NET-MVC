@@ -1,4 +1,5 @@
-﻿@using WebMVCApplication.Common
+﻿@using WebMVCApplication.Entities
+@using WebMVCApplication.Common
 @model WebMVCApplication.Models.ResultViewModel
 
 @section PageContent {
@@ -8,7 +9,25 @@
 @{
     ViewData["Title"] = "Home Page";
 
-    bool upComingClass = true;
+    var startDate = ViewData["Start-date"] as DateOnly? ?? new DateOnly();
+    var endDate = ViewData["End-date"] as DateOnly? ?? new DateOnly();
+
+    var currentDateTime = ViewData["VN-DateTime"] as DateTime? ?? new DateTime();
+    var currentTimeOnly = TimeOnly.FromDateTime(currentDateTime);
+    var schedules = ViewData["Schedules"] as List<Schedule> ?? new();
+
+    var todaySchedules = schedules
+        .Where(s => s.Date == DateOnly.FromDateTime(currentDateTime))
+        .OrderBy(s => s.StartTime);
+    var recentClass = todaySchedules
+        .Where(s => currentTimeOnly < s.EndTime)
+        .FirstOrDefault();
+    var upcomingClass = todaySchedules
+        .Where(s => currentTimeOnly <= s.StartTime)
+        .FirstOrDefault();
+
+    string dateInfo = $"{currentDateTime.DayOfWeek}, {(Months)currentDateTime.Month} {currentDateTime.Day}, {currentDateTime.Year}";
+    var timeInfo = currentDateTime.ToString("HH:mm:ss");
 }
 
 <div class="homepage-container">
@@ -22,14 +41,14 @@
                         <p>Current / Upcoming class</p>
                     </div>
                     <div class="dashboard-recent-class-infor">
-                        @if (upComingClass)
+                        @if (recentClass is not null)
                         {
                             <i class="fa-solid fa-user-group"></i>
                             <div style="min-width: 200px; flex: 1;">
-                                <p>Room: 305</p>
-                                <p>Slot 3: 12:30 - 14:45</p>
-                                <p>Subject: CSI106</p>
-                                <p>Class: SE1901-CSI106</p>
+                                <p>Room: @recentClass.Room?.Name</p>
+                                <p>Slot @recentClass.SlotNumber: @recentClass.StartTime.ToString("HH:mm") - @recentClass.EndTime.ToString("HH:mm")</p>
+                                <p>Subject: @recentClass.Subject?.Code</p>
+                                <p>Class: @recentClass.Class?.ClassCode</p>
                             </div>
                         }
                         else
@@ -42,8 +61,8 @@
                     </div>
                 </div>
                 <div class="dashboard-datetime">
-                    <p>Wednesday, December 18, 2024</p>
-                    <p class="datetime bold">13:50:00</p>
+                    <p>@dateInfo</p>
+                    <p class="datetime bold">@timeInfo</p>
                 </div>
             </div>
             <div class="dashboard-statistic">
@@ -51,14 +70,21 @@
                     <div class="upcoming-class">
                         <div>
                             <p class="gray">Upcoming class</p>
-                            <p class="bold">Done</p>
+                            @if (upcomingClass is null)
+                            {
+                                <p class="bold">Done</p>
+                            }
+                            else
+                            {
+                                <p class="bold">@upcomingClass.Subject?.Code</p>
+                            }
                         </div>
                         <i class="fa-regular fa-user"></i>
                     </div>
                     <div class="statistic-class">
                         <div>
                             <p class="gray">Today class</p>
-                            <p class="bold">2/3</p>
+                            <p class="bold">@todaySchedules.Where(s => s.StartTime <= currentTimeOnly).Count()/@todaySchedules.Count()</p>
                         </div>
                         <i class="fa-solid fa-tablet"></i>
                     </div>
@@ -67,8 +93,10 @@
                     <p class="gray">Subject Prepare</p>
                     <div class="dashboard-subject-prepare">
                         <div class="dashboard-subjects">
-                            <p class="bold">CSI106</p>
-                            <p class="bold">IoT102t</p>
+                            @foreach (var item in todaySchedules.Where(s => s.EndTime > currentTimeOnly))
+                            {
+                                <p class="bold">@item.Subject?.Code</p>
+                            }
                         </div>
                         <i class="fa-solid fa-swatchbook"></i>
                     </div>
@@ -108,10 +136,10 @@
             <div class="calendar-timetable-title">
                 <div class="calendar-timetable-title-left">
                     <i class="fa-regular fa-calendar"></i>
-                    <p>December 16 - 22</p>
+                    <p>@((Months)currentDateTime.Month) @startDate.Day - @endDate.Day</p>
                 </div>
                 <div class="calendar-timetable-title-right">
-                    <div>Semester: FA24</div>
+                    <div>Semester: @ViewData["Current-semester-code"]</div>
                     <div class="calendar-timetable-title-button">
                         <div class="calendar-timetable-title-prevButton">
                             <i class="fa-solid fa-caret-left"></i>
@@ -127,34 +155,13 @@
             <div class="calendar-timetable-table">
                 <div class="calendar-timetable-table-header">
                     <div class="calendar-timetable-table-time-column"></div>
-                    <div class="calendar-timetable-table-day-column">
-                        <span>16 Mon</span>
-                        <div class="calendar-timetable-table-day-column-seperate"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <span>17 Tue</span>
-                        <div class="calendar-timetable-table-day-column-seperate"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column current">
-                        <span>18 Wed</span>
-                        <div class="calendar-timetable-table-day-column-seperate"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <span>19 Thu</span>
-                        <div class="calendar-timetable-table-day-column-seperate"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <span>20 Fri</span>
-                        <div class="calendar-timetable-table-day-column-seperate"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <span>21 Sat</span>
-                        <div class="calendar-timetable-table-day-column-seperate"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <span>22 Sun</span>
-                        <div class="calendar-timetable-table-day-column-seperate"></div>
-                    </div>
+                    @for (DateOnly date = startDate; date <= endDate; date = date.AddDays(1))
+                    {
+                        <div class="calendar-timetable-table-day-column @(currentDateTime.Day == date.Day ? "current" : "")">
+                            <span>@date.Day @date.DayOfWeek.ToString().Substring(0, 3)</span>
+                            <div class="calendar-timetable-table-day-column-seperate"></div>
+                        </div>
+                    }
                     <div class="calendar-timetable-table-day-column"></div>
                 </div>
             </div>
@@ -179,251 +186,56 @@
                         <div class="calendar-timetable-table-time-slot"><span>9:00 PM</span></div>
                         <div class="calendar-timetable-table-time-slot"><span>10:00 PM</span></div>
                     </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
+                    @for (DateOnly date = startDate; date <= endDate; date = date.AddDays(1))
+                    {
+                        IEnumerable<Schedule> currentSchedules = schedules.Where(s => s.Date == date);
+                        bool checkCurrentTime = currentDateTime.Day == date.Day;
+                        var timelinePosition = currentTimeOnly.AddHours(-6).Hour * 60 + (double)currentTimeOnly.Minute;
 
-                        <div class="calendar-timetable-table-event" data-status="active">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="calendar-timetable-table-event" data-status="future">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="current-time-line"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
+                        <div class="calendar-timetable-table-day-column">
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
+                            <div class="calendar-timetable-table-day-slot @(checkCurrentTime ? "current" : "")"></div>
 
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="current-time-line"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
-                        <div class="calendar-timetable-table-day-slot current"></div>
+                            @foreach (var schedule in currentSchedules)
+                            {
+                                var timeDifference = (schedule.StartTime.AddHours(-6)).Hour * 60 + (double)schedule.StartTime.Minute;
+                                var timeDuration = (schedule.EndTime - schedule.StartTime).TotalMinutes;
 
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="current-time-line active"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
+                                string scheduleStatus = "";
+                                if (date.Day == currentDateTime.Day && schedule.StartTime <= currentTimeOnly && 
+                                    currentTimeOnly <= schedule.EndTime)
+                                    scheduleStatus = "active";
+                                else if (date.Day > currentDateTime.Day)
+                                    scheduleStatus = "future";
 
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="current-time-line"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
+                                <div class="calendar-timetable-table-event" data-status="@scheduleStatus"
+                                     style="top: @(timeDifference + timeDifference/60)px; height: @(timeDuration + timeDuration/60)px;">
+                                    <p class="slot-time">@schedule.StartTime.ToString("hh:mm tt") - @schedule.EndTime.ToString("hh:mm tt")</p>
+                                    <p class="slot-info">@schedule.Subject?.Code</p>
+                                    <p class="slot-info">@schedule.Room?.Name</p>
+                                    <p class="slot-info">@schedule.Class?.ClassCode</p>
+                                    <p class="slot-number">Slot @schedule.SlotNumber</p>
+                                </div>
+                            }
 
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
+                            <div class="current-time-line @(checkCurrentTime ? "active" : "")" style="top: @(timelinePosition + timelinePosition/60)px;"></div>
                         </div>
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="current-time-line"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="current-time-line"></div>
-                    </div>
-                    <div class="calendar-timetable-table-day-column">
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-                        <div class="calendar-timetable-table-day-slot"></div>
-
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="calendar-timetable-table-event">
-                            <p class="slot-time">7:00 AM - 9:15 AM</p>
-                            <p class="slot-info">IoT102t</p>
-                            <p class="slot-info">302</p>
-                            <p class="slot-info">SE1845-IoT102t</p>
-                            <p class="slot-number">Slot 1</p>
-                        </div>
-                        <div class="current-time-line"></div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
@@ -517,14 +329,14 @@
         }
     }
 
-    $(window).resize(function () {
-        checkWindowSize();
-    });
+    // $(window).resize(function () {
+    //     checkWindowSize();
+    // });
 
     function UpdateEventPosition(gap = 1){
         $(".calendar-timetable-table-event").each(function(index, element){
             var currentTop = parseInt($(element).css('top'), 10);
-            var multi = Math.floor(currentTop / 60);
+            var multi = currentTop / 60;
             var newTop = multi * 60 + multi * gap;
             $(element).css("padding-bottom", (multi-1)*gap + "px");
             $(element).css("top", newTop + "px");

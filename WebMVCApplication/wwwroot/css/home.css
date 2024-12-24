@@ -300,9 +300,9 @@ p {
 }
 .calendar-timetable-table-event {
     position: absolute;
-    top: 0px;
+    top: 0px; /*Identify*/
     left: 0px;
-    height: 91px;
+    height: 91px; /*Identify*/
 
     display: flex;
     flex-direction: column;
@@ -319,6 +319,10 @@ p {
 
     border: 1px solid #265985;
     border-radius: 5px;
+    cursor: pointer;
+}
+.calendar-timetable-table-event:hover{
+    background-color: #bfd2e6;
 }
 .calendar-timetable-table-event .slot-time {
     font-size: 10px;
@@ -351,13 +355,13 @@ p {
 
 .current-time-line.active {
     position: absolute;
-    top: 60px;
+    top: 60px; /*Identify*/
     width: 100%;
-    border-top: 2px solid #00ff87;
+    border-top: 2px solid #08c76d;
 }
 
 
-@media screen and (min-width: 1890px) {
+/*@media screen and (min-width: 1890px) {
     .calendar-timetable-table {
         gap: 2px;
     }
@@ -378,7 +382,8 @@ p {
     .calendar-timetable-table-day-column {
         gap: 3px;
     }
-}
+}*/
+
 @media screen and (min-height: 1000px) {
     .calendar-timetable-table.body {
         height: 800px;
